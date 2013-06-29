@@ -234,6 +234,15 @@ void Nokia1202::clear()
   for (i=0; i < NOKIA1202_LINES; i++)
     _dirtybits[i] = 0x0000;
 #endif
+  // Plant the cursor at its new position.
+  if (_useCursor) {
+#ifdef NOKIA1202_USE_FRAMEBUFFER
+    _framebuffer[_y * NOKIA1202_COLUMNS, _x] = 0x80;
+#endif
+    _writefont(0x80);
+    setxy(_x * NOKIA1202_CHAR_WIDTH, _y);
+  }
+
 }
 
 /* Set DDRAM cursor */
