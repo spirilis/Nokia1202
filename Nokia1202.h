@@ -39,7 +39,7 @@
 #include <stdint.h>
 
 
-#define NOKIA1202_VERSION 0.2
+#define NOKIA1202_VERSION 0.3
 
 /* Stellaris support--from Enrf24 */
 #if defined(__LM4F120H5QR__)
