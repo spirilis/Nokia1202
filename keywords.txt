@@ -1,0 +1,24 @@
+# Syntax Coloring Map for Nokia1202
+
+
+# Class name KEYWORD1
+Nokia1202	KEYWORD1
+
+
+# Methods KEYWORD2
+begin	KEYWORD2
+end	KEYWORD2
+
+write	KEYWORD2
+print	KEYWORD2
+println	KEYWORD2
+puts	KEYWORD2
+setCursor	KEYWORD2
+clear	KEYWORD2
+powersave	KEYWORD2
+invert	KEYWORD2
+contrast	KEYWORD2
+refreshrate	KEYWORD2
+
+# Constants LITERAL1
+
