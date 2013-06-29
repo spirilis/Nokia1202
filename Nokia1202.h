@@ -82,7 +82,7 @@
 class Nokia1202 : public Print {
   public:
     Nokia1202(uint8_t _csPin);
-    void begin(uint8_t contrast=15, boolean useCursor=true, uint8_t _tabSpacing = 4);
+    void begin(boolean useCursor=true, uint8_t contrast=15, uint8_t _tabSpacing = 4);
     void end();
 
     /* Command I/O -- normally used internally but exposed for tinkering */
