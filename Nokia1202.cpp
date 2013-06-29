@@ -237,10 +237,10 @@ void Nokia1202::clear()
   // Plant the cursor at its new position.
   if (_useCursor) {
 #ifdef NOKIA1202_USE_FRAMEBUFFER
-    _framebuffer[_y * NOKIA1202_COLUMNS, _x] = 0x80;
+    _framebuffer[0] = 0x80;
 #endif
     _writefont(0x80);
-    setxy(_x * NOKIA1202_CHAR_WIDTH, _y);
+    setxy(0, 0);
   }
 
 }
@@ -442,7 +442,7 @@ size_t Nokia1202::write(uint8_t c)
   // Plant the cursor at its new position.
   if (_useCursor) {
 #ifdef NOKIA1202_USE_FRAMEBUFFER
-    _framebuffer[_y * NOKIA1202_COLUMNS, _x] = 0x80;
+    _framebuffer[_y * NOKIA1202_COLUMNS + _x] = 0x80;
     _dirtybits[_y] |= 1 << _x;
 #else
     setxy(_x * NOKIA1202_CHAR_WIDTH, _y);
@@ -520,6 +520,7 @@ void Nokia1202::setCursor(uint8_t x, uint8_t y)
     _dirtybits[_y] |= 1 << _x;
     _flush();
 #else
+    setxy(_x * NOKIA1202_CHAR_WIDTH, _y);
     _writefont(0x80);
 #endif
   }

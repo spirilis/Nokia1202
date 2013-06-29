@@ -39,7 +39,7 @@
 #include <stdint.h>
 
 
-#define NOKIA1202_VERSION 0.3
+#define NOKIA1202_VERSION 0.4
 
 /* Stellaris support--from Enrf24 */
 #if defined(__LM4F120H5QR__)
@@ -82,7 +82,7 @@
 class Nokia1202 : public Print {
   public:
     Nokia1202(uint8_t _csPin);
-    void begin(boolean useCursor=true, uint8_t contrast=15, uint8_t _tabSpacing = 4);
+    void begin(boolean useCursor=true, uint8_t contrast=15, uint8_t tabSpacing = 4);
     void end();
 
     /* Command I/O -- normally used internally but exposed for tinkering */
@@ -108,11 +108,12 @@ class Nokia1202 : public Print {
     void puts(const char *buf);
 
 
+    uint8_t _x, _y;
+    uint8_t _framebuffer[NOKIA1202_LINES * NOKIA1202_COLUMNS];
   private:
     uint8_t _contrast;
     uint8_t _csPin;
     uint8_t _tabSpacing;
-    uint8_t _x, _y;
     boolean _useCursor;
     boolean _doFlush;  // Optimization flag making puts() a lot faster than print() or println()
 
@@ -120,7 +121,6 @@ class Nokia1202 : public Print {
     void _writefont(uint8_t c);  // Dumb write to the display (resolves char into font_5x7 array)
 #ifdef NOKIA1202_USE_FRAMEBUFFER
     void _flush();  // Used in framebuffer mode only, performs mass update of display
-    uint8_t _framebuffer[NOKIA1202_LINES * NOKIA1202_COLUMNS];
     uint16_t _dirtybits[NOKIA1202_LINES];
 #endif
 };
