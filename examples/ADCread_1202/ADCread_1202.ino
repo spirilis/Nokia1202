@@ -10,7 +10,6 @@
 Nokia1202 lcd(P2_0);
 
 void setup() {
-  pinMode(P1_0, INPUT);  // ADC input will be used here
   pinMode(P2_5, OUTPUT);  // LCD's backlight (default pin for The 1202 boosterpack)
   digitalWrite(P2_5, HIGH);  // Backlight on full brightness
   
@@ -25,9 +24,9 @@ void loop() {
   unsigned int i;
   
   delay(1000);
-  i = analogRead(P1_0);
+  i = analogRead(A1);
   analogWrite(P2_5, i >> 2);  // Brightness changes with ADC value
-  lcd.print("P1_0: ");
+  lcd.print("A1(P1_1): ");
   lcd.println(i);
 }
 
