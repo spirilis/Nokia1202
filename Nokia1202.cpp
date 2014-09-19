@@ -334,6 +334,9 @@ size_t Nokia1202::write(uint8_t c)
   uint8_t i = 0;
 
   // Process the character as-is
+  if (c > 0x82)
+    c = 0x20;
+
   if (c >= 0x20) {
 #ifdef NOKIA1202_USE_FRAMEBUFFER
     _framebuffer[_y * NOKIA1202_COLUMNS + _x] = c;
