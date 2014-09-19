@@ -76,7 +76,7 @@
 #define NOKIA1202_COLUMNS 16
 
 /* Use framebuffer? */
-//#define NOKIA1202_USE_FRAMEBUFFER 1
+#define NOKIA1202_USE_FRAMEBUFFER 1
 
 /* Class definition--inherits from Print so we have .print() functions */
 class Nokia1202 : public Print {

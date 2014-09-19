@@ -143,6 +143,8 @@ const unsigned char font_5x7[][6] = {		// basic font
 	,{0x10, 0x08, 0x08, 0x10, 0x08, 0x00} // 7e ~
 	,{0x00, 0x06, 0x09, 0x09, 0x06, 0x00} // 7f Deg Symbol
 	,{0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0} // 80 Cursor
+        ,{0x08, 0x18, 0x38, 0x3F, 0x1F, 0x3F} // 81 TI logo - left half
+        ,{0x44, 0xF6, 0x3C, 0x1C, 0x18, 0x00} // 82 TI logo - right half
 };
 /* end of font */
 
@@ -332,9 +334,6 @@ size_t Nokia1202::write(uint8_t c)
   uint8_t i = 0;
 
   // Process the character as-is
-  if (c > 0x80)    // High-bit characters treated as spaces (except 0x80 which is the cursor)
-    c = 0x20;
-
   if (c >= 0x20) {
 #ifdef NOKIA1202_USE_FRAMEBUFFER
     _framebuffer[_y * NOKIA1202_COLUMNS + _x] = c;
